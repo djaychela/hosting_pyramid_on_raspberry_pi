@@ -191,20 +191,20 @@ Next, the uwsgi emperor config file.  Much of the language used by the emperor i
 
 `sudo joe /etc/uwsgi-emperor/vassals/testapp.ini`
 
-[uwsgi]
-socket = /srv/testapp/uwsgi.sock
-chmod-socket = 775
-chdir = /srv/testapp
-master = true
-binary-path = /usr/local/bin/uwsgi
-virtualenv = /srv/testapp/venv
-uid = www-data
-gid = www-data
-processes = 1
-threads = 1
-plugins = python3, logfile
-logger = file:/srv/testapp/uwsgi.log
-paste = config:/srv/testapp/production.ini
+    [uwsgi]
+    socket = /srv/testapp/uwsgi.sock
+    chmod-socket = 775
+    chdir = /srv/testapp
+    master = true
+    binary-path = /usr/local/bin/uwsgi
+    virtualenv = /srv/testapp/venv
+    uid = www-data
+    gid = www-data
+    processes = 1
+    threads = 1
+    plugins = python3, logfile
+    logger = file:/srv/testapp/uwsgi.log
+    paste = config:/srv/testapp/production.ini
 
 Once this is done, re-start the emperor:
 
