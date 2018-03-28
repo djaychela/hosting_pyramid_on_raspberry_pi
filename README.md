@@ -97,7 +97,7 @@ If this is your first time running through this process, it's a good idea to get
 
 nginx needs to be configured to use the Pyramid app.  
 
-'sudo joe /etc/nginx/sites-enabled/testapp.conf'
+`sudo joe /etc/nginx/sites-enabled/testapp.conf`
 
 insert the following content:
 
@@ -159,7 +159,8 @@ followed by
 ## Installing the Test Web App
 
 To do the installation, it's important to get everything installed into the venv - and this may not be possible as it's owned by the root user.  Before solving this, I did a -lot- of head scratching and wondering if I was cut out for this sort of thing - and it's a difficult thing to search for as the behaviour isn't specific or easy to pin down.  The solution I've found is to alter the entire folder to ownership by the current user (pi), do all the installation, and then once it's all complete, change it to be owned by www-data (which nginx runs as)
-sudo chown -R pi:pi /srv/testapp
+
+`sudo chown -R pi:pi /srv/testapp`
 
 Next, PasteDeploy is needed - this allows uWSGI to run the Pyramid app from the .ini file - rather than having to make changes to your application to get it to work a particular way.  In this way, you can still use the development server while you're making changes, and then upload the entire web app to your Pi server without changes.  Note that you do this as the current user because of the change in permissions made above.
 
@@ -176,6 +177,7 @@ It's possible (depending on the order you do things) that the installation will 
 and try again!
 
 Now, change the ownership of the entire folder to www-data with the following command:
+
 `sudo chown -R www-data:www-data /srv/testapp`
 
 Use the following command to run the Pyramid App via uwsgi from the command line.
@@ -189,6 +191,8 @@ You should see something similar to the below:
 Going to your Pi's IP address in a browser should now display the Pyramid Test App:
 
 ![pyramid test app running ok](https://user-images.githubusercontent.com/2767094/38052723-194a5f6a-32ca-11e8-9e49-dd818acb3ac3.png)
+
+## Using uwsgi emperor to serve the app
 
 The next step is to get uwsgi emperor working.
 
