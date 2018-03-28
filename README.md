@@ -1,4 +1,4 @@
-# hosting_pyramid_on_raspberry_pi
+# Hosting a Pyramid web project on a Raspberry Pi
 Guide to getting pyramid projects up and running using a Raspberry Pi, Nginx and uwsgi
 
 This guide is intended to help you get your Pyramid web project up and running on a Raspberry Pi.  In this, we'll take a Pi and a blank SD card, and go through all the steps needed to get the Pi up and running with Nginx serving your Pyramid project.  A significant part of the setup is covered in Chris Warrick's excellent guide here: 
@@ -231,13 +231,13 @@ Note that you'll be disconnected from your SSH session, so you'll have to log ba
 
 ![init 6 result](https://user-images.githubusercontent.com/2767094/38052717-18c10846-32ca-11e8-8abc-67e42e18e4db.png)
 
-But as soon as the Pi is up and running (and without logging in), the site should be up and running.
+But as soon as the Pi is up and running (and without you needing to log in), the site should be up and running.
 
 ## Installing a real app.
 
-Now it's time to install your real app.  This is the same process as before, but you can probably forego the manual run of uwsgi.  It usually pays to halt the uwsgi-emperor service while you're making changes to the site (to avoid the .sock file being generated and stopping you installing your app).
+Now it's time to install your real app.  This is the same process as before, but you can probably forego the manual run of uwsgi (although it is useful to do it for fault finding, as it saves having to review the log file contents for any faults).  It usually pays to halt the uwsgi-emperor service while you're making changes to the site (to avoid the .sock file being generated and stopping you installing your app).
 
-You will follow much the same process as for the test app, but you will need to install the requirements for the app before installing the module.  This is usually done by running the following command from within your app folder:
+You will follow much the same process as for the test app, but you will need to install the requirements for the app before installing the module with setup.py.  This is usually done by running the following command from within your app folder:
 
 `pip3 install -r requirements.txt`
 
