@@ -23,7 +23,9 @@ Once written, etcher will verify the data written to the card.
 <etcher validating.png>
 If all is well, you will see something similar to this.
 <etcher success.png>
+    
 ##Enable SSH
+
 It's possible to use the Pi with a separate keyboard and monitor, but it's often convenient to connect to it over a network using SSH and another computer - this makes maintenance tasks easier later on.  While initial setup will be done using a monitor, this will mean access after this first phase can be done over the network. To do this, before removing the newly-created SD card, create a file called 'ssh' and put it on the boot partition of the SD card, as in step 3 here:
 
 https://www.raspberrypi.org/documentation/remote-access/ssh/
@@ -31,7 +33,9 @@ https://www.raspberrypi.org/documentation/remote-access/ssh/
 Here's the boot partition contents before:
 
 <boot partition ready.png>
+    
 And with the ssh file in place:
+
 <boot partition with ssh.png>
 
 Now it's time to boot the Pi - connect it to a monitor with a USB keyboard, and the SD card in the slot.  You should see something similar to the following:
