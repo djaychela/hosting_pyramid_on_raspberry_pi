@@ -5,7 +5,7 @@ This guide is intended to help you get your Pyramid web project up and running o
 
 https://chriswarrick.com/blog/2016/02/10/deploying-python-web-apps-with-nginx-and-uwsgi-emperor/
 
-- but there are some details and differences not covered there.
+But there are some details and differences not covered there.
 
 # Get the Pi up and running.
 
@@ -18,11 +18,11 @@ Download the 'Raspbian Stretch Lite' image.  Then follow the instructions here:
 https://www.raspberrypi.org/documentation/installation/installing-images/README.md
 
 Use Etcher to install the image to your SD card.
-<etcher in progress.png>
+![etcher in progress](https://user-images.githubusercontent.com/2767094/38052695-09a720c0-32ca-11e8-87fd-3d32aa561b77.png)
 Once written, etcher will verify the data written to the card.
-<etcher validating.png>
+![etcher validating](https://user-images.githubusercontent.com/2767094/38052702-0f7c3382-32ca-11e8-82e2-a6a425f443e2.png)
 If all is well, you will see something similar to this.
-<etcher success.png>
+![etcher success](https://user-images.githubusercontent.com/2767094/38052700-0d5a0f0c-32ca-11e8-8352-a65f393a6710.png)
     
 ## Enable SSH
 
@@ -32,11 +32,11 @@ https://www.raspberrypi.org/documentation/remote-access/ssh/
 
 Here's the boot partition contents before:
 
-<boot partition ready.png>
+![boot partition ready](https://user-images.githubusercontent.com/2767094/38052732-1d4d63dc-32ca-11e8-9c41-fb8b4c7a6cdf.png)
     
 And with the ssh file in place:
 
-<boot partition with ssh.png>
+![boot partition with ssh](https://user-images.githubusercontent.com/2767094/38052733-1d649f20-32ca-11e8-9724-00e8249c3ae4.png)
 
 Now it's time to boot the Pi - connect it to a monitor with a USB keyboard, and the SD card in the slot.  You should see something similar to the following:
 
@@ -47,11 +47,12 @@ There are a couple of things to note here - the IP address (which can be found u
 <password change from phone>
 
 You can now connect to your Pi via SSH.  Here, using PuTTY on a PC, with the IP address entered, there will be a warning about the server's host key. 
-<putty ssh key.png>
+
+![putty ssh key](https://user-images.githubusercontent.com/2767094/38052722-192c9692-32ca-11e8-963f-b5fc7f2771f0.png)
 
 Provided you're connected to the right device, you can trust this key, and click Yes.  You will then see a login screen, where you can enter the username pi and your new password.  You should now be logged in:
 
-<pi logged in via ssh.png>
+![pi logged in via ssh](https://user-images.githubusercontent.com/2767094/38052721-190d2af0-32ca-11e8-80de-9b07439e6990.png)
 
 Now it's time to get nginx up and running.
 
@@ -67,11 +68,11 @@ then install nginx:
 
 You'll see a large number of packages being installed to allow nginx to run - it usually takes a minute or two.  
 
-<installing nginx.png>
+![installing nginx](https://user-images.githubusercontent.com/2767094/38052719-18de20fc-32ca-11e8-977e-bdabea80c6b9.png)
 
 Once done, go to the IP address of your Pi in a browser:
 
-<nginx up and running.png>
+![nginx up and running](https://user-images.githubusercontent.com/2767094/38052720-18f73056-32ca-11e8-8a02-9dae3d0da77b.png)
 
 If you see this, nginx is up and running, serving its default (simple) web page.
 
@@ -81,7 +82,7 @@ uWSGI is the means by which the Pyramid app will be connected to nginx, and ther
 
 `sudo apt install virtualenv python3 uwsgi uwsgi-emperor uwsgi-plugin-python3 joe git`
 
-<uwsgi installed.png>
+![uwsgi installed](https://user-images.githubusercontent.com/2767094/38052724-195dc3f2-32ca-11e8-80f6-525f53926ccf.png)
 
 # Getting A Simple App Running
 
@@ -120,8 +121,11 @@ Make sure you delete any backup files made by joe (if you are using it) - they w
 
 ## Copying the project, creating the directories and virtual environment
 Move to the directory where the project will be served from (/srv):
+
 `cd /srv`
+
 To make this process simpler (and consistent), I've put a simple pyramid app on github. First, use git to clone the test project into a 'testapp' folder:
+
 `sudo git clone https://github.com/djaychela/simple_pyramid_test testapp`
 
 `cd testapp`
@@ -137,7 +141,7 @@ activate it using:
 should change the command prompt to (venv)
 running 'python' should show that you have python3 installed (version 3.5.3 in this case below)
 
-<virtualenv python3.png>
+![virtualenv python3](https://user-images.githubusercontent.com/2767094/38052726-198a9dd2-32ca-11e8-9d1a-7ee30c0adc81.png)
 
 There can be some issues with installations not working properly on a venv that has not been deactivated, so get that out of the way to be sure:
 
@@ -175,11 +179,11 @@ Use the following command to run the Pyramid App via uwsgi from the command line
 
 You should see something similar to the below:
 
-<uwsgi running from command line.png>
+![uwsgi running from command line](https://user-images.githubusercontent.com/2767094/38052725-19755102-32ca-11e8-84c6-1922b85a3361.png)
 
 Going to your Pi's IP address in a browser should now display the Pyramid Test App:
 
-<pyramid test app running.png>
+![pyramid test app running ok](https://user-images.githubusercontent.com/2767094/38052723-194a5f6a-32ca-11e8-9e49-dd818acb3ac3.png)
 
 The next step is to get uwsgi emperor working.
 
@@ -216,7 +220,7 @@ You should now see the same test app as before, but most importantly, it's now r
 
 Note that you'll be disconnected from your SSH session, so you'll have to log back in to make further changes:
 
-<init 6 result.png>
+![init 6 result](https://user-images.githubusercontent.com/2767094/38052717-18c10846-32ca-11e8-8abc-67e42e18e4db.png)
 
 But as soon as the Pi is up and running (and without logging in), the site should be up and running.
 
