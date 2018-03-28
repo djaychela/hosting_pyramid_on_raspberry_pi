@@ -91,26 +91,26 @@ nginx needs to be configured to use the Pyramid app.
 
 insert the following content:
 
-`server {
-    # for a public HTTP server:
-    listen 80;
-    # for a public HTTPS server:
-    # listen 443 ssl;
-    server_name localhost myapp.local;
+    server {
+        # for a public HTTP server:
+        listen 80;
+        # for a public HTTPS server:
+        # listen 443 ssl;
+        server_name localhost myapp.local;
 
-    location / {
-        include uwsgi_params;
-        uwsgi_pass unix:/srv/testapp/uwsgi.sock;
-    }
+        location / {
+            include uwsgi_params;
+            uwsgi_pass unix:/srv/testapp/uwsgi.sock;
+        }
 
-    location /static {
-        alias /srv/testapp/simple_pyramid_test/static;
-    }
+        location /static {
+            alias /srv/testapp/simple_pyramid_test/static;
+        }
 
-    location /favicon.ico {
-        alias /srv/testapp/simple_pyramid_test/static/pyramid-16x16.png;
+        location /favicon.ico {
+            alias /srv/testapp/simple_pyramid_test/static/pyramid-16x16.png;
+        }
     }
-}`
 
 Make sure you delete any backup files made by joe (if you are using it) - they will have ~ appended to the filename (and nginx will not be happy about this)
 
