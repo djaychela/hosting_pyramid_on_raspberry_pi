@@ -119,21 +119,28 @@ Move to the directory where the project will be served from (/srv):
 `cd /srv`
 To make this process simpler (and consistent), I've put a simple pyramid app on github. First, use git to clone the test project into a 'testapp' folder:
 `sudo git clone https://github.com/djaychela/simple_pyramid_test testapp`
+
 `cd testapp`
+
 Create a virtual environment running python 3:
+
 `sudo virtualenv -p /usr/bin/python3 venv`
+
 activate it using:
+
 `source venv/bin/activate`
+
 should change the command prompt to (venv)
-running
-'python'
-should show that you have python3 installed (version 3.5.3 in this case below)
+running 'python' should show that you have python3 installed (version 3.5.3 in this case below)
 
 <virtualenv python3.png>
 
 There can be some issues with installations not working properly on a venv that has not been deactivated, so get that out of the way to be sure:
+
 `deactivate`
+
 followed by
+
 `source /srv/testapp/venv/bin/activate`
 
 ## Installing the Test Web App
