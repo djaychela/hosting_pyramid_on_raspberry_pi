@@ -18,10 +18,15 @@ Download the 'Raspbian Stretch Lite' image.  Then follow the instructions here:
 https://www.raspberrypi.org/documentation/installation/installing-images/README.md
 
 Use Etcher to install the image to your SD card.
+
 ![etcher in progress](https://user-images.githubusercontent.com/2767094/38052695-09a720c0-32ca-11e8-87fd-3d32aa561b77.png)
+
 Once written, etcher will verify the data written to the card.
+
 ![etcher validating](https://user-images.githubusercontent.com/2767094/38052702-0f7c3382-32ca-11e8-82e2-a6a425f443e2.png)
+
 If all is well, you will see something similar to this.
+
 ![etcher success](https://user-images.githubusercontent.com/2767094/38052700-0d5a0f0c-32ca-11e8-8352-a65f393a6710.png)
     
 ## Enable SSH
