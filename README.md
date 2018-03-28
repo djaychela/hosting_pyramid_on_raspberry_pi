@@ -71,14 +71,16 @@ Once done, go to the IP address of your Pi in a browser:
 
 If you see this, nginx is up and running, serving its default (simple) web page.
 
-#Installing uwsgi
+# Installing uwsgi
+
 uWSGI is the means by which the Pyramid app will be connected to nginx, and there are a number of elements to install.  They are covered with the following command:
 
 `sudo apt install virtualenv python3 uwsgi uwsgi-emperor uwsgi-plugin-python3 joe git`
 
 <uwsgi installed.png>
 
-#Getting A Simple App Running
+# Getting A Simple App Running
+
 If this is your first time running through this process, it's a good idea to get a simple Pyramid App (with few dependencies) up and running - this makes the process of setup and fault-finding simpler as there are fewer areas to have problems.  Once this simple app is up and running, you can then configure the app you actually want to use!  If you've done this a couple of times and/or are confident of the setup so far, then you can skip the latter part of this section and move straight to getting your web app up and running.  In either case, the preliminaries (setting up the virtual environment and directories for the app) will need to be carried out.
 
 ## Configuring nginx
@@ -89,7 +91,7 @@ nginx needs to be configured to use the Pyramid app.
 
 insert the following content:
 
-server {
+`server {
     # for a public HTTP server:
     listen 80;
     # for a public HTTPS server:
@@ -108,7 +110,7 @@ server {
     location /favicon.ico {
         alias /srv/testapp/simple_pyramid_test/static/pyramid-16x16.png;
     }
-}
+}`
 
 Make sure you delete any backup files made by joe (if you are using it) - they will have ~ appended to the filename (and nginx will not be happy about this)
 
