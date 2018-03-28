@@ -7,7 +7,8 @@ https://chriswarrick.com/blog/2016/02/10/deploying-python-web-apps-with-nginx-an
 
 - but there are some details and differences not covered there.
 
-#Get the Pi up and running.
+# Get the Pi up and running.
+
 First step is to get the Pi up and running.  We will be using the 'Lite' Image, which means it uses a command line interface (CLI) to change the settings - no desktop environment.  This is smaller, lighter and simpler.  Download the image from here:
 
 https://www.raspberrypi.org/downloads/raspbian/
@@ -50,7 +51,8 @@ Provided you're connected to the right device, you can trust this key, and click
 
 Now it's time to get nginx up and running.
 
-#Installing Nginx
+# Installing Nginx
+
 We'll now start installing the software we need, starting with nginx - the web server that is going to serve up our Pyramid app.  Firstly, update the installation database using:
 
 `sudo apt-get update`
@@ -79,7 +81,8 @@ uWSGI is the means by which the Pyramid app will be connected to nginx, and ther
 #Getting A Simple App Running
 If this is your first time running through this process, it's a good idea to get a simple Pyramid App (with few dependencies) up and running - this makes the process of setup and fault-finding simpler as there are fewer areas to have problems.  Once this simple app is up and running, you can then configure the app you actually want to use!  If you've done this a couple of times and/or are confident of the setup so far, then you can skip the latter part of this section and move straight to getting your web app up and running.  In either case, the preliminaries (setting up the virtual environment and directories for the app) will need to be carried out.
 
-##Configuring nginx
+## Configuring nginx
+
 nginx needs to be configured to use the Pyramid app.  
 
 'sudo joe /etc/nginx/sites-enabled/testapp.conf'
@@ -131,7 +134,8 @@ There can be some issues with installations not working properly on a venv that 
 followed by
 `source /srv/testapp/venv/bin/activate`
 
-##Installing the Test Web App
+## Installing the Test Web App
+
 To do the installation, it's important to get everything installed into the venv - and this may not be possible as it's owned by the root user.  Before solving this, I did a -lot- of head scratching and wondering if I was cut out for this sort of thing - and it's a difficult thing to search for as the behaviour isn't specific or easy to pin down.  The solution I've found is to alter the entire folder to ownership by the current user (pi), do all the installation, and then once it's all complete, change it to be owned by www-data (which nginx runs as)
 sudo chown -R pi:pi /srv/testapp
 
@@ -204,6 +208,7 @@ Note that you'll be disconnected from your SSH session, so you'll have to log ba
 But as soon as the Pi is up and running (and without logging in), the site should be up and running.
 
 ## Installing a real app.
+
 Now it's time to install your real app.  This is the same process as before, but you can probably forego the manual run of uwsgi.  It usually pays to halt the uwsgi-emperor service while you're making changes to the site (to avoid the .sock file being generated and stopping you installing your app).
 
 You will follow much the same process as for the test app, but you will need to install the requirements for the app before installing the module.  This is usually done by running the following command from within your app folder:
