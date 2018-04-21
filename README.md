@@ -243,4 +243,20 @@ You will follow much the same process as for the test app, but you will need to 
 
 After this, you should be able to install the app, and run it in the same way you did before - you'll need to make appropriate changes to the uwsgi and nginx config files, but those changes should be fairly simple and easy to follow when changing them from the test app settings.
 
+## Command summary for app installation
 
+Here are the commands needed without explanation for installing an app.
+
+`cd /srv
+sudo git clone https://github.com/djaychela/simple_pyramid_test testapp
+cd testapp
+sudo virtualenv -p /usr/bin/python3 venv
+source venv/bin/activate
+deactivate
+source venv/bin/activate
+sudo chown -R pi:pi /srv/testapp
+pip3 install PasteDeploy
+pip3 install -r requirements.txt
+pip3 install /srv/testapp/
+sudo chown -R www-data:www-data /srv/testapp
+sudo systemctl start uwsgi-emperor.service`
