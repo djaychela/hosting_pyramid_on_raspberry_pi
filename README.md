@@ -247,7 +247,7 @@ After this, you should be able to install the app, and run it in the same way yo
 
 Here are the commands needed without explanation for installing an app.
 
-`cd /srv
+```cd /srv
 
 sudo git clone https://github.com/djaychela/simple_pyramid_test testapp
 
@@ -271,4 +271,4 @@ pip3 install /srv/testapp/
 
 sudo chown -R www-data:www-data /srv/testapp
 
-sudo systemctl start uwsgi-emperor.service`
+sudo systemctl start uwsgi-emperor.service```
